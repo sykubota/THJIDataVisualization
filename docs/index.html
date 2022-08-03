@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" lang="en">
+<head>
+  
+  <title>CSE442 | A3</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap'">
+  <style media="all">
+* { padding: 0; margin: 0; }
+ body {
+  margin: 0 auto 0 auto;
+  padding: 0;
+  max-width: 1200px;
+  font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+  font-size: 0.95em;
+}
+ a, a:visited { text-decoration: none; color: #7533f4; }
+a:hover { text-decoration: underline; color: #f4b014; }
+ h1, h2, h3, h4, h5 {
+  color: #492a7c;
+  background-color: inherit;
+  font-weight: normal;
+  padding: 0 0 5px 0;
+  margin: 15px 0 0 0;
+  border: none;
+  clear: right;
+}
+h1 { font-size: 24pt; margin:  5px 0 10px 0; line-height: 28px; }
+h2 { font-size: 14pt; margin: 30px 0 15px 0; letter-spacing: 0.01em; border-bottom: 1px solid #ccc;  line-height: 20px;}
+h3 { font-size: 13pt; }
+h4 { font-size: 12pt; }
+h5 { font-size: 11pt; }
+p { margin: 0 0 10px 0; }
+ .content {
+  margin: 0;
+  padding: 15px 20px;
+  background-color: #ffffff;
+}
+ .title, .title h1, .title a {
+  color: #492a7c;
+  font-size: 24pt;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+ .footer {
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
+  padding-top: 4px;
+  text-align: right;
+  font-size: 12px;
+}
+.footer a {
+  color: #21346B;
+}
+.footer a:hover {
+  color: #ce3333;
+}
+
+hr {
+  height: 1px;
+  border: 1px;
+  background-color: #ccc;
+  border: #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.pic {
+  width: 550px;
+}
+
+#graphs{
+    display: flex;
+    position: sticky;
+}
+    
+#observablehq-graph-de06ff7d {
+    display: flex;
+    justify-content: center;
+}
+
+/* event selector */
+#observablehq-viewof-eventsSelection-8ce7eb0f {
+  display: flex;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: auto;
+  z-index: 100;
+  background-color: white;
+  padding: 10px 0px 10px 0px;
+}
+
+#maps{
+    width: 50vw;
+    margin-top: 20%;
+    position: sticky;
+    top: 10%;
+    align-self: flex-start;
+}
+
+#t{
+    width: 50vw;
+}
+
+
+/* timeline */
+#chart-background {
+    fill: "#FAF9FB";
+  }
+
+  .tick line,
+  .domain {
+    stroke: #E2E0E5;
+  }
+
+
+text {
+  fill: #3C3941;
+  font: 400 16px/1.4 "Source Sans Pro", "Noto Sans", sans-serif;
+}
+
+.event-title {
+  fill: #3C3941;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+}
+
+.event-title:hover {
+  cursor: default;
+}
+
+.event-description {
+  fill: #3C3941;
+  font: 400 16px/1.4 "Source Sans Pro", "Noto Sans", sans-serif;
+  transform: translateY(1em);
+}
+
+#title {
+  fill: #3C3941;
+  font: 600 16px/1.4 "Source Sans Pro", "Noto Sans", sans-serif;
+}
+
+.axis text {
+  font: 400 16px/1.4 "Source Sans Pro", "Noto Sans", sans-serif;
+  fill: #676170;
+}
+
+/* @media (max-width: ${params.smallScreenSize}px) {
+  text,
+  .event-title,
+  .event-description,
+  #title,
+  .axis text {
+    font-size: 14px;
+  }
+} */
+
+/* tooltips */
+.wrapper {
+    position: relative;
+  }
+
+  .tooltip {
+    background-color: #fff;
+    border: 1px solid #5F428F;
+    font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+    left: 0;
+    max-width: 300px;
+    opacity: 0;
+    padding: calc(16px - 1px); /* border width adjustment */
+    pointer-events: none;
+    border-radius: 5px;
+    position: absolute;
+    top: -8px;
+    transition: opacity 0.1s linear, transform 0.05s ease-in-out;
+    z-index: 1;
+  }
+
+  .tooltip-name {
+    margin-bottom: 0.2em;
+    font-size: 1em;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+
+  .tooltip-description {
+    margin-bottom: 0.2em;
+    font-size: 0.85em;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+    
+  .tooltip a { 
+    pointer-events: auto; 
+  }
+
+  #definition {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #5F428F;
+    font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+    left: 0;
+    max-width: 300px;
+    border-radius: 5px;
+    margin: auto;
+    /* position: absolute; */
+  }
+
+  #definition-word {
+    font-size: 1.5em;
+  }
+
+  .svg-tooltip {
+    position: absolute;
+    display: none;
+    min-width: 50px;
+    border-radius: 4px;
+    height: auto + 10px;
+    background-color: #fff;
+    border: 1px solid #5F428F;
+    padding: 12px 8px 0px 8px;
+    font-size: .85rem;
+    text-align: left;
+    z-index: 1000;    
+    font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+    line-height: 30%;
+  }
+
+  .svg-tooltip p {
+    margin: 0 0 12px 0;
+  }
+
+  .svg-tooltip h4 {
+    margin-top: -0.4em; /* -6px; */
+    font-size: 1em;
+    line-height: 1.4;
+    font-weight: 700;
+    color: black;
+  }
+
+  </style>
+</head>
+<body>
+<div class="content">
+   <section class="title">
+    <a href="/">A Short History of Human Internment</a>
+  </section>
+
+   <section>
+    <p>
+      <strong>Team Members</strong>: Vanessa Ross, Yae Kubota, Leah Tran, Stephanie Chuang
+    </p>
+  </section>
+
+  <section>
+    <!-- <h2>Final Project</h2> -->
+    <hr>
+
+    <!-- <h3>Introduction </h3> -->
+    <div id="definition">
+      <p id="definition-word">in·tern·ment</p>
+      <p>/inˈtərnmənt/</p>
+      <p><em>noun</em></p>
+      <p>the state of being confined as a prisoner, especially for political or military reasons. <p>
+      <p><em>Definition from Oxford Languages </em></p>
+    </div>
+
+
+    <h2>A Brief History</h2>
+    <p> 
+      While internment via camps have been used many times throughout history and have been called many different names, 
+      two of the ones most well known to the Western world are the Holocaust and the Japanese Internment, which both 
+      happened during the second World War between 1933 and 1946. 
+    </p>
+    <p>
+      In Europe, while Anti-Semitic attitudes existed long before World War 2, it wasn’t a belief held by the general population. 
+      With the rise of the Nazi party in Germany, many became apathetic towards  the Jewish population, which the Nazi party 
+      took advantage of to reinforce their Anti-Semetic propoganda. 
+    </p>
+    <p>
+      In the US, racial tensions were already on the rise, particularly towards groups of Asian descent. While the Chinese Exclusion 
+      Act wasn’t aimed toward all Asians, the prejudice behind the support of that law wasn’t limited to those of Chinese descent. 
+      This was reinforced by Japan rising to the status of world power. 
+    </p>
+    <p>
+      In addition, the rise of Eugenics in the 20s and 30s definitely reinforced prejudices throughout the Western world as a whole.
+    </p>
+
+    
+    <h2>Introduction</h2>
+    <p>
+      The United States and Germany both made numerous decisions to remove power from people they viewed as threats. 
+      As you explore the timeline, notice how the events for both the Holocaust and Japanese Internment started, peaked, and ended around the same time. 
+      However, the Japanese Internment events started off much slower than Holocaust events.
+    </p>
+    <p>
+      See the difference in the number of events for the Holocaust and Japanese Internment in the chart below.
+    </p>
+
+    <div id="observablehq-graph-de06ff7d">
+      <script type="module">
+      import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+      import define from "https://api.observablehq.com/@vanna879/narrative-graph.js?v=3";
+      new Runtime().module(define, name => {
+        if (name === "graph") return new Inspector(document.querySelector("#observablehq-graph-de06ff7d"));
+      });
+      </script>
+    </div>
+
+    <p>
+      The chart above shows that events progressed similarly for both the Holocaust and Japanese Internment over time, 
+      though there is significantly less activity in the earlier years for Japanese Internment. 
+      The Japanese Internment camp events taking longer to ramp up may have contributed to making Japanese internment seem less severe than the Holocaust, 
+      which is further illustrated by perusing the events in the timeline below. 
+    </p>
+    <!-- <br> -->
+  </section>
+
+  <section>    
+    <div id="graphs">
+        <div id="t">
+        <div id="observablehq-viewof-eventsSelection-8ce7eb0f"></div>
+      <div id="observablehq-DiDoesDigital2020Timeline-8ce7eb0f"></div>
+
+      <script type="module">
+      import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+      import define from "https://api.observablehq.com/d/9cd4f0003615e589.js?v=3";
+      new Runtime().module(define, name => {
+        if (name === "viewof eventsSelection") return new Inspector(document.querySelector("#observablehq-viewof-eventsSelection-8ce7eb0f"));
+        if (name === "DiDoesDigital2020Timeline") return new Inspector(document.querySelector("#observablehq-DiDoesDigital2020Timeline-8ce7eb0f"));
+        return ["data"].includes(name);
+      });
+      </script>
+    </div>
+    
+    <div id="maps">
+      <div id="observablehq-holocaustCampsChart-01c2df41"></div>
+      <div id="observablehq-internmentCampsChart-01c2df41"></div>
+      
+      <script type="module">
+      import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+      import define from "https://api.observablehq.com/d/9cd4f0003615e589.js?v=3";
+      new Runtime().module(define, name => {
+        if (name === "holocaustCampsChart") return new Inspector(document.querySelector("#observablehq-holocaustCampsChart-01c2df41"));
+        if (name === "internmentCampsChart") return new Inspector(document.querySelector("#observablehq-internmentCampsChart-01c2df41"));
+      });
+      </script>
+    </div>
+    </div>
+  </section>
+
+  <section>
+   <h3>External Image Links</h3>
+   <a href = "https://www.alst.org/zimgs2/divers/badges.jpg">Image: Prisoner Rankings</a><br><img src="https://www.alst.org/zimgs2/divers/badges.jpg" width="250">
+   <br><a href = "https://www.bl.uk/learning/timeline/external/expresskristallnacht-tl.jpg">Image: Newspaper clipping</a> <br><img src="https://www.bl.uk/learning/timeline/external/expresskristallnacht-tl.jpg" width="250">
+   <br><a href = "https://www.bl.uk/learning/timeline/external/expresskristallnacht-tl.jpg">Image: Newspaper clipping</a> <br><img src="https://www.bl.uk/learning/timeline/external/expresskristallnacht-tl.jpg" width="250">
+   <br><a href = "https://krakow.wiki/wp-content/uploads/2016/10/ghettomap.png">Image: Map of the Krakow Ghetto. </a><br><img src="https://krakow.wiki/wp-content/uploads/2016/10/ghettomap.png" height="150">
+   <br><a href = "https://fcit.usf.edu/holocaust/MAPS/map007.gif">Image: Map of the Warsaw Ghetto</a><br> <img src="https://fcit.usf.edu/holocaust/MAPS/map007.gif" height="150">
+   <br><a href = "https://encyclopedia.ushmm.org/images/large/aba347c4-4be1-4250-90ce-122d7378719d.gif.pagespeed.ce._ltiFBehhl.gif">Image: Map of the Bialystok Ghetto. </a> <br><img src="https://encyclopedia.ushmm.org/images/large/aba347c4-4be1-4250-90ce-122d7378719d.gif.pagespeed.ce._ltiFBehhl.gif" width="250">
+   <br><a href = "https://encyclopedia.ushmm.org/images/large/81417343-ed6f-4a9f-8041-026c98dd6e90.gif.pagespeed.ce.cmlNaJ0Bxe.gif"> Image: Map of the Lvov Ghetto</a><br><img src="https://encyclopedia.ushmm.org/images/large/81417343-ed6f-4a9f-8041-026c98dd6e90.gif.pagespeed.ce.cmlNaJ0Bxe.gif" width="250">
+   <br><a href = "https://encyclopedia.densho.org/front/media/cache/6f/b3/6fb33905a0f1920f200abded3644fb80.jpg">Image: Photo of a section from the loyalty questionaire. </a> <br> <img src="https://encyclopedia.densho.org/front/media/cache/6f/b3/6fb33905a0f1920f200abded3644fb80.jpg" width="250">
+   <br><a href = "https://s3.amazonaws.com/libapps/accounts/67969/images/death-chart.jpg">Image: Chart showing a look at the number of Jewish deaths during the Holocaust by country. </a><br> <img src="https://s3.amazonaws.com/libapps/accounts/67969/images/death-chart.jpg" height="150">
+  </section>
+  
+  <div class="footer">
+    <a href="https://courses.cs.washington.edu/courses/cse442/21au/">CSE 442 Data Visualization</a>
+    <a href="http://www.washington.edu">University of Washington</a>
+  </div>
+ </div>
+ 
+</body>
+</html> 
