@@ -8,26 +8,22 @@ Team members:
 
 Project page: https://cse442-21f.github.io/FP-Timeline-Human-Internment/  
 
-Modify or replace `index.html` in the `docs` folder to update your project page.
-
-
 ## Distribution of Work
 
 Arguably, most of the work that went into the timeline was around gathering and cleaning up the data. We needed to do our own research to figure out what events we wanted to focus on in our timeline and then format that information to be concise and fit within the confines of the timeline.
 
-We then split up the coding work among all four of us. Additional research and data wrangling still needed to be done as well to make sure the data worked with our narrative goal as it developed and that it worked with our timeline structure.
-
-Generally, we broke down the work in the following way: 
-
-*Vanessa*: Holocaust data research/wrangling, tidying overall dataset, timeline structure, timeline tooltips and additional links/images.
-
-*Yae*: Japanese Internment data research/wrangling, timeline and map side-by-side structure, introduction, tidying overall dataset.
-
-*Leah*: intial research on timeline structure, map implementation and debugging, introduction, floating selector, tidying overall dataset.
-
-*Stephanie*: additional visualizations, floating selector, map debugging, (unfinished stretch goal) linking timeline and maps.
-
-*All*: general timeline debugging, definition of narrative goal.
+Tasks:
+Holocaust data research/wrangling
+Japanese Internment data research/wrangling
+Writing introduction
+Tidying overall dataset
+Timeline structure
+Timeline and map side-by-side structure
+Map implementation and debugging
+Timeline tooltips 
+Floating selector
+Finding additional links/images
+Linking timeline and maps (unfinished stretch goal) 
 
 Due to time constraints, we were unable to complete our stretch goal of linking the timeline to the maps. 
 
